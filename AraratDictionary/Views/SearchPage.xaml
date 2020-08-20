@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AraratDictionary.Views.SearchPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:AraratDictionary;assembly=AraratDictionary"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:local="clr-namespace:AraratDictionary"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Ararat Dictionary"
+    mc:Ignorable="d">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            x:Name="English"
+            Clicked="English_OnClicked"
+            Text="En" />
+        <ToolbarItem
+            x:Name="Kurdish"
+            Clicked="Kurdish_OnClicked"
+            Text="Ku" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid RowDefinitions="auto,auto,auto" RowSpacing="0">
+
+
+            <SearchBar
+                x:Name="EntrySearch"
+                Grid.Row="0"
+                Margin="0,15,0,1"
+                FontSize="Large"
+                IsSpellCheckEnabled="True"
+                Placeholder="Search"
+                TextChanged="EntrySearch_OnTextChanged" />
+            <ListView
+                x:Name="lstDisplay"
+                Grid.Row="1"
+                HasUnevenRows="true"
+                RefreshAllowed="True"
+                SeparatorColor="GhostWhite">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid
+                                Padding="5"
+                                BackgroundColor="GhostWhite"
+                                ColumnDefinitions="3*,0.3*"
+                                RowDefinitions="auto,auto,auto">
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    FontAttributes="Bold"
+                                    FontSize="Large"
+                                    HorizontalOptions="FillAndExpand"
+                                    HorizontalTextAlignment="Start"
+                                    Text="{Binding English}"
+                                    TextColor="Black" />
+                                <ImageButton
+                                    x:Name="Speak"
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    BackgroundColor="GhostWhite"
+                                    Clicked="Speak_OnClicked"
+                                    HeightRequest="10"
+                                    HorizontalOptions="FillAndExpand"
+                                    Opacity="0.5"
+                                    Source="speaker.png" />
+                                <ImageButton
+                                    x:Name="Favorite"
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    BackgroundColor="GhostWhite"
+                                    Clicked="Favorite_OnClicked"
+                                    HeightRequest="10"
+                                    HorizontalOptions="FillAndExpand"
+                                    Opacity="0.5"
+                                    Source="star.png" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.ColumnSpan="1"
+                                    Margin="0,0,0,0"
+                                    FontSize="Large"
+                                    HorizontalTextAlignment="End"
+                                    Opacity="0.7"
+                                    Text="{Binding Kurdish}"
+                                    TextColor="Black" />
+                                <BoxView
+                                    Grid.Row="2"
+                                    Grid.ColumnSpan="2"
+                                    BackgroundColor="Black"
+                                    HeightRequest="1"
+                                    HorizontalOptions="FillAndExpand"
+                                    Opacity="0.4" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <controls:AdmobControl
+                Grid.Row="2"
+                AdUnitId="{Binding AdUnitId}"
+                HorizontalOptions="FillAndExpand" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

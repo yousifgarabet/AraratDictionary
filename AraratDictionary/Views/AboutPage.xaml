@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AraratDictionary.Views.AboutPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:AraratDictionary;assembly=AraratDictionary"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:local="clr-namespace:AraratDictionary"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:AraratDictionary.ViewModels"
+    Title="Ararat Dictionary"
+    mc:Ignorable="d">
+
+    <ContentPage.BindingContext>
+        <vm:AboutViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Primary">#2196F3</Color>
+            <Color x:Key="Accent">#96d1ff</Color>
+            <Color x:Key="LightTextColor">#999999</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <StackLayout
+            Grid.Row="0"
+            BackgroundColor="{StaticResource Accent}"
+            HorizontalOptions="Fill"
+            VerticalOptions="FillAndExpand">
+            <StackLayout
+                HorizontalOptions="Center"
+                Orientation="Horizontal"
+                VerticalOptions="Center">
+
+                <ContentView Padding="5,5,5,5" VerticalOptions="FillAndExpand">
+
+                    <Image
+                        HeightRequest="80"
+                        HorizontalOptions="Center"
+                        Source="ararat_logo.png"
+                        VerticalOptions="Center" />
+                </ContentView>
+
+            </StackLayout>
+        </StackLayout>
+
+        <ScrollView Grid.Row="1">
+            <StackLayout
+                Padding="16,10,16,10"
+                Orientation="Vertical"
+                Spacing="10">
+                <Label FontSize="Title">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span
+                                    FontAttributes="Bold"
+                                    FontSize="33"
+                                    Text="Ararat Dictionary" />
+                                <Span Text=" " />
+                                <Span
+                                    FontSize="Body"
+                                    ForegroundColor="{StaticResource LightTextColor}"
+                                    Text="v4.3" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label FontSize="Large">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="Ararat Dictionary is one of the biggest dictionary in Kurdish language that contains more than " />
+                                <Span Text=" " />
+                                <Span
+                                    FontAttributes="Bold"
+                                    FontSize="Large"
+                                    Text="78,000 words" />
+                                <Span Text="." />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label FontSize="Large">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="Design and Programming by:" />
+                                <Span Text=" " />
+                                <Span
+                                    FontAttributes="Bold"
+                                    FontSize="Title"
+                                    Text="Yousif Garabet" />
+                                <Span Text="." />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span
+                                    FontAttributes="Bold"
+                                    FontSize="Large"
+                                    Text="I have MSc. in Computer Science / Artificial Intelligence. and I have taught programming lectures in University of Zakho and Zakho Polytechnic" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label FontSize="Large">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="Majority of words are taken from: " />
+                                <Span Text=" " />
+                                <Span
+                                    FontAttributes="Bold"
+                                    FontSize="Large"
+                                    Text="Salah Dictionary" />
+                                <Span Text="." />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label FontSize="Large">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="If you have any Question, or if you want to send me any word that doesn't exist in this app, kindly" />
+                                <Span Text=" " />
+                                <Span
+                                    FontAttributes="Bold"
+                                    FontSize="Large"
+                                    Text="Send us an email" />
+                                <Span Text="." />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Button
+                    x:Name="btnSendEmail"
+                    Margin="0,10,0,0"
+                    BackgroundColor="{StaticResource NavigationPrimary}"
+                    Clicked="BtnSendEmail_OnClicked"
+                    CornerRadius="50"
+                    FontSize="Title"
+                    Text="Send an Email"
+                    TextColor="White" />
+            </StackLayout>
+        </ScrollView>
+        <controls:AdmobControl
+            Grid.Row="2"
+            AdUnitId="{Binding AdUnitId}"
+            HorizontalOptions="FillAndExpand" />
+    </Grid>
+
+</ContentPage>

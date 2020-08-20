@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AraratDictionary.Views.SearchPageTeleric.SearchPageTeleric"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:AraratDictionary.Views.SearchPageTeleric"
+    xmlns:telerikDataControls="clr-namespace:Telerik.XamarinForms.DataControls;assembly=Telerik.XamarinForms.DataControls"
+    xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input"
+    xmlns:telerikListView="clr-namespace:Telerik.XamarinForms.DataControls.ListView;assembly=Telerik.XamarinForms.DataControls"
+    Title="ListView With AutoComplete">
+    <ContentPage.BindingContext>
+        <local:ViewModel />
+    </ContentPage.BindingContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <SearchBar
+            x:Name="EntrySearch"
+            Grid.Row="0"
+            Margin="0,15,0,1"
+            FontSize="Large"
+            IsSpellCheckEnabled="True"
+            Placeholder="Search"
+            TextChanged="EntrySearch_OnTextChanged" />
+        <telerikDataControls:RadListView x:Name="lstDisplay" Grid.Row="1">
+            <telerikDataControls:RadListView.LayoutDefinition>
+                <telerikListView:ListViewLinearLayout />
+            </telerikDataControls:RadListView.LayoutDefinition>
+            <telerikDataControls:RadListView.ItemTemplate>
+                <DataTemplate>
+                    <telerikListView:ListViewTemplateCell>
+                        <telerikListView:ListViewTemplateCell.View>
+                            <Grid
+                                Padding="5"
+                                BackgroundColor="GhostWhite"
+                                ColumnDefinitions="3*,0.3*"
+                                RowDefinitions="auto,auto,auto">
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    FontAttributes="Bold"
+                                    FontSize="Large"
+                                    HorizontalOptions="FillAndExpand"
+                                    HorizontalTextAlignment="Start"
+                                    Text="{Binding English}"
+                                    TextColor="Black" />
+                                <ImageButton
+                                    x:Name="Speak"
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    BackgroundColor="GhostWhite"
+                                    Clicked="Speak_OnClicked"
+                                    HeightRequest="10"
+                                    HorizontalOptions="FillAndExpand"
+                                    Opacity="0.5"
+                                    Source="speaker.png" />
+                                <ImageButton
+                                    x:Name="Favorite"
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    BackgroundColor="GhostWhite"
+                                    HeightRequest="10"
+                                    HorizontalOptions="FillAndExpand"
+                                    Opacity="0.5"
+                                    Source="star.png" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.ColumnSpan="1"
+                                    Margin="0,0,0,0"
+                                    FontSize="Large"
+                                    HorizontalTextAlignment="End"
+                                    Opacity="0.7"
+                                    Text="{Binding Kurdish}"
+                                    TextColor="Black" />
+                                <BoxView
+                                    Grid.Row="2"
+                                    Grid.ColumnSpan="2"
+                                    BackgroundColor="Black"
+                                    HeightRequest="1"
+                                    HorizontalOptions="FillAndExpand"
+                                    Opacity="0.4" />
+                            </Grid>
+                        </telerikListView:ListViewTemplateCell.View>
+                    </telerikListView:ListViewTemplateCell>
+                </DataTemplate>
+            </telerikDataControls:RadListView.ItemTemplate>
+        </telerikDataControls:RadListView>
+    </Grid>
+</ContentPage>
